@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 
 import daos.JogoDao;
 import entities.Jogo;
+import utils.MessageUtil;
 
 @ManagedBean
 @ViewScoped
@@ -20,21 +21,26 @@ public class JogoBean implements Serializable{
 	private List<Jogo> list;
 	
 	public String salvar() {
-		
-		Random random = new Random();		
-		int maxRandom = 10;
-
-		jogo.setNumAleatorio1(random.nextInt(maxRandom)); 
-		jogo.setNumAleatorio2(random.nextInt(maxRandom)); 
-		jogo.setNumAleatorio3(random.nextInt(maxRandom)); 
-		jogo.setNumAleatorio4(random.nextInt(maxRandom)); 
-		jogo.setNumAleatorio5(random.nextInt(maxRandom));
-		jogo.setResultado(jogo.getResultado());
-					
-		JogoDao.salvar(jogo);
-
-		jogo = new Jogo();
+		try {	
+			Random random = new Random();		
+			int maxRandom = 10;
 	
+			jogo.setNumAleatorio1(random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio2(random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio3(random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio4(random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio5(random.nextInt(maxRandom));
+			jogo.setResultado(jogo.getResultado());
+						
+			JogoDao.salvar(jogo);
+			
+			MessageUtil.sucesso("Sucesso: ", "Jogo salvo com sucesso!");
+			
+			jogo = new Jogo();
+			
+		} catch(Exception e) {
+			MessageUtil.erro("Erro: ", "Erro ao salvar o Jogo!");
+		}	
 		return null;
 	}
 

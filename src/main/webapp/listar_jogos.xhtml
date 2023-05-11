@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Listing</title>
+</h:head>
+
+<h:body>	
+		
+	<h:form id="form1">
+			
+		<p:panel header="Página de Listagem de Jogos" >
+		
+			
+			
+			<div style="display: flex; justify-content: space-around; margin-bottom: 25px;">
+				
+				<p:linkButton action="novo_jogo" outcome="novo_jogo" value="Novo Jogo" icon="pi pi-user-plus" 
+					style="border: 5px solid; 
+					border-radius: 25px;"/>
+															
+			</div>
+			
+			<p:dataTable id="dt" value="#{jogoBean.list}" var="l" selection="#{jogoBean.jogo}" selectionMode="single" rowKey="#{l.id}"
+			paginator="true" rows="3" paginatorPosition="bottom">	
+										
+				<p:column headerText="Id">
+					<p:column>
+						<p:outputLabel value="#{l.id}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Jogador">
+					<p:column>
+						<p:outputLabel value="#{l.jogador}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Número do Jogador">
+					<p:column>
+						<p:outputLabel value="#{l.numJogador}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Aleatório-1">
+					<p:column>
+						<p:outputLabel value="#{l.numAleatorio1}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Aleatório-2">
+					<p:column>
+						<p:outputLabel value="#{l.numAleatorio2}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Aleatório-3">
+					<p:column>
+						<p:outputLabel value="#{l.numAleatorio3}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Aleatório-4">
+					<p:column>
+						<p:outputLabel value="#{l.numAleatorio4}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Aleatório-5">
+					<p:column>
+						<p:outputLabel value="#{l.numAleatorio5}"/>							
+					</p:column>										
+				</p:column>
+				
+				<p:column headerText="Resultado">
+					<p:column>
+						<p:outputLabel value="#{l.resultado}">
+						</p:outputLabel>							
+					</p:column>										
+				</p:column>
+								
+				<p:column headerText="Ações">
+					<p:column>
+						<p:commandButton icon="pi pi-search" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
+							style="border: 5px solid; 
+							border-radius: 50%;
+							background-color: #f39c12;
+							margin-right: 7px;
+							width: 3rem;
+							height: 3rem;">							
+							<f:setPropertyActionListener value="#{l}" target="#{jogoBean.jogo}"/>								
+						</p:commandButton>
+															
+					</p:column>				
+					
+				</p:column>
+							
+			</p:dataTable>
+			
+		</p:panel>	
+		
+	</h:form>
+				
+	<p:dialog header="Visualizar" widgetVar="visualizar" >
+		<h:form id="form_view" >
+			<h:panelGrid columns="2" cellpadding="5" id="visualizar">
+				<p:outputLabel for="id" value="Id: "/>
+				<p:inputText id="id" value="#{jogoBean.jogo.id}" disabled="true"/>
+
+				<p:outputLabel for="jogador" value="Jogador: "/>
+				<p:inputText id="jogador" value="#{jogoBean.jogo.jogador}" disabled="true"/>
+				
+				<p:outputLabel for="numJogador" value="Numero Jogador: "/>
+				<p:inputText id="numJogador" value="#{jogoBean.jogo.numJogador}" disabled="true"/>
+
+				<p:outputLabel for="random1" value="Aleatório-1: "/>
+				<p:inputText id="random1" value="#{jogoBean.jogo.numAleatorio1}" disabled="true"/>
+				
+				<p:outputLabel for="random2" value="Aleatório-2: "/>
+				<p:inputText id="random2" value="#{jogoBean.jogo.numAleatorio2}" disabled="true"/>
+				
+				<p:outputLabel for="random3" value="Aleatório-3: "/>
+				<p:inputText id="random3" value="#{jogoBean.jogo.numAleatorio3}" disabled="true"/>
+				
+				<p:outputLabel for="random4" value="Aleatório-4: "/>
+				<p:inputText id="random4" value="#{jogoBean.jogo.numAleatorio4}" disabled="true"/>
+				
+				<p:outputLabel for="random5" value="Aleatório-5: "/>
+				<p:inputText id="random5" value="#{jogoBean.jogo.numAleatorio5}" disabled="true"/>
+				
+				<p:outputLabel for="result" value="Resultado: "/>
+				<p:inputText id="result" value="#{jogoBean.jogo.resultado}" disabled="true"/>
+	
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>			
+
+</h:body>
+
+</html>

@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ public class Jogo implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer id;
-	private String nome;
+	private String jogador;
 	
 	@Column(name = "num_jogador")
 	private Integer numJogador;
@@ -39,6 +38,7 @@ public class Jogo implements Serializable{
 	@Column(name = "num_aleatorio5")
 	private Integer numAleatorio5;
 	
+	private Boolean resultado;	
 	
 		
 	public Integer getId() {
@@ -47,11 +47,12 @@ public class Jogo implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	
+	public String getJogador() {
+		return jogador;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setJogador(String jogador) {
+		this.jogador = jogador;
 	}
 	
 	public Integer getNumJogador() {
@@ -89,5 +90,21 @@ public class Jogo implements Serializable{
 	}
 	public void setNumAleatorio5(Integer numAleatorio5) {
 		this.numAleatorio5 = numAleatorio5;
-	}	
+	}
+	
+	public Boolean getResultado() {
+		if (numJogador == numAleatorio1 || numJogador == numAleatorio2 || numJogador == numAleatorio3 || numJogador == numAleatorio4 || numJogador == numAleatorio5 ) {
+
+			resultado = true;
+		}
+		else {
+			resultado = false;
+		}
+			
+		return resultado;
+	}
+	
+	public void setResultado(Boolean resultado) {
+		this.resultado = resultado;
+	}		
 }

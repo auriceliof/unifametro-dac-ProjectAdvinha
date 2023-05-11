@@ -33,7 +33,9 @@
 					
 					<div style="margin-bottom: 20px;">
 						<p:outputLabel for="numJogador" value="Insira um numero entre 1 e 10: "/>
-						<p:inputText id="numJogador" value="#{jogoBean.jogo.numJogador}" />				
+						<p:inputText id="numJogador" value="#{jogoBean.jogo.numJogador}" >
+							<f:validateDoubleRange minimum="1" maximum="10" />
+						</p:inputText>				
 					</div>
 										
 					<div style="margin-top: 30px;">

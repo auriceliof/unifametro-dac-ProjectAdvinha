@@ -22,14 +22,15 @@ public class JogoBean implements Serializable{
 	
 	public String salvar() {
 		try {	
-			Random random = new Random();		
+			Random random = new Random();
+			int minRandom = 1;
 			int maxRandom = 10;
-	
-			jogo.setNumAleatorio1(random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio2(random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio3(random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio4(random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio5(random.nextInt(maxRandom));
+			
+			jogo.setNumAleatorio1(1 + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio2(1 + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio3(1 + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio4(1 + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio5(1 + random.nextInt(maxRandom));
 			jogo.setResultado(jogo.getResultado());
 						
 			JogoDao.salvar(jogo);

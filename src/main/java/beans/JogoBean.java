@@ -26,11 +26,11 @@ public class JogoBean implements Serializable{
 			int minRandom = 1;
 			int maxRandom = 10;
 			
-			jogo.setNumAleatorio1(1 + random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio2(1 + random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio3(1 + random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio4(1 + random.nextInt(maxRandom)); 
-			jogo.setNumAleatorio5(1 + random.nextInt(maxRandom));
+			jogo.setNumAleatorio1(minRandom + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio2(minRandom + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio3(minRandom + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio4(minRandom + random.nextInt(maxRandom)); 
+			jogo.setNumAleatorio5(minRandom + random.nextInt(maxRandom));
 			jogo.setResultado(jogo.getResultado());
 						
 			JogoDao.salvar(jogo);

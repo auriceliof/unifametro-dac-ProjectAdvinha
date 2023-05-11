@@ -17,75 +17,66 @@
 			
 		<p:panel header="Página de Listagem de Jogos" >
 		
-			
-			
 			<div style="display: flex; justify-content: space-around; margin-bottom: 25px;">
-				
 				<p:linkButton action="novo_jogo" outcome="novo_jogo" value="Novo Jogo" icon="pi pi-user-plus" 
 					style="border: 5px solid; 
-					border-radius: 25px;"/>
-															
+					border-radius: 25px;"/>						
 			</div>
 			
 			<p:dataTable id="dt" value="#{jogoBean.list}" var="l" selection="#{jogoBean.jogo}" selectionMode="single" rowKey="#{l.id}"
-			paginator="true" rows="3" paginatorPosition="bottom">	
+			paginator="true" rows="3" paginatorPosition="bottom" style="text-align: center;">	
 										
-				<p:column headerText="Id">
-					<p:column>
-						<p:outputLabel value="#{l.id}"/>							
-					</p:column>										
-				</p:column>
-				
-				<p:column headerText="Jogador">
+				<p:column headerText="Jogador" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.jogador}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Número do Jogador">
+				<p:column headerText="Número Jogador" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numJogador}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Aleatório-1">
+				<p:column headerText="Aleatório-1" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numAleatorio1}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Aleatório-2">
+				<p:column headerText="Aleatório-2" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numAleatorio2}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Aleatório-3">
+				<p:column headerText="Aleatório-3" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numAleatorio3}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Aleatório-4">
+				<p:column headerText="Aleatório-4" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numAleatorio4}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Aleatório-5">
+				<p:column headerText="Aleatório-5" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.numAleatorio5}"/>							
 					</p:column>										
 				</p:column>
 				
-				<p:column headerText="Resultado">
+				<p:column headerText="Resultado" style="text-align: center;">
 					<p:column>
 						<p:outputLabel value="#{l.resultado}">
+						
 						</p:outputLabel>							
 					</p:column>										
 				</p:column>
 								
-				<p:column headerText="Ações">
+				<p:column headerText="Ações" style="text-align: center;">
 					<p:column>
 						<p:commandButton icon="pi pi-search" oncomplete="PF('visualizar').show()" title="Visualizar" update="form_view"
 							style="border: 5px solid; 
@@ -95,9 +86,20 @@
 							width: 3rem;
 							height: 3rem;">							
 							<f:setPropertyActionListener value="#{l}" target="#{jogoBean.jogo}"/>								
-						</p:commandButton>
-															
-					</p:column>				
+						</p:commandButton>									
+					</p:column>	
+								
+					<p:column>
+						<p:commandButton icon="pi pi-trash" oncomplete="PF('deletar').show()" title="Deletar" update="form_del"
+							style="border: 5px solid; 
+							border-radius: 50%; 
+							background-color: #e55039;
+							margin-right: 7px;
+							width: 3rem;
+							height: 3rem;">	
+							<f:setPropertyActionListener value="#{l}" target="#{jogoBean.jogo}"/>							
+						</p:commandButton>														
+					</p:column>	
 					
 				</p:column>
 							
@@ -139,7 +141,19 @@
 	
 			</h:panelGrid>
 		</h:form>
-	</p:dialog>			
+	</p:dialog>	
+	
+	<p:dialog header="Deseja relamente deletar o Jogo?" widgetVar="deletar">
+		<h:form id="form_del">
+			<h:panelGrid columns="2" cellpadding="5" id="deletar">
+				<p:inputText id="jogador" value="#{jogoBean.jogo.jogador}" disabled="true"/>
+			</h:panelGrid>
+				
+			<p:commandButton value="Sim" action="#{jogoBean.deletar}" oncomplete="PF('deletar').hide()" style="background-color:#27ae60; margin-right: 10px; margin-top: 20px;" update="form1"/>	
+			<p:commandButton value="Não" oncomplete="PF('deletar').hide()" style="background-color:#e55039"/>			
+		</h:form>					
+	</p:dialog>	
+			
 
 </h:body>
 

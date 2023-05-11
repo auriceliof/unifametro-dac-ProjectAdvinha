@@ -8,26 +8,23 @@ import entities.Jogo;
 public class Principal {
 	public static void main(String[] args) {
 		
-/*		
-		Random random = new Random();		
+		Random random = new Random();
+		int minRandom = 1;
+		int maxRandom = 10;
 		
-		System.out.println("Início");
+		
+		Jogo jogo = new Jogo();
+		
+		jogo.setJogador("Teste2");
+		jogo.setNumJogador(7);
 				
-		
-		Jogo j = new Jogo();
-		j.setJogador("Marcos");
-		j.setNumJogador(10);
-		j.setNumAleatorio1(random.nextInt(10)); 
-		j.setNumAleatorio2(random.nextInt(10)); 
-		j.setNumAleatorio3(random.nextInt(10)); 
-		j.setNumAleatorio4(random.nextInt(10)); 
-		j.setNumAleatorio5(random.nextInt(10));
-		j.setResultado(j.getResultado());
+		jogo.setNumAleatorio1(minRandom + random.nextInt(maxRandom)); 
+		jogo.setNumAleatorio2(minRandom + random.nextInt(maxRandom)); 
+		jogo.setNumAleatorio3(minRandom + random.nextInt(maxRandom)); 
+		jogo.setNumAleatorio4(minRandom + random.nextInt(maxRandom)); 
+		jogo.setNumAleatorio5(minRandom + random.nextInt(maxRandom));
+		jogo.setResultado(jogo.getResultado());
 					
-		JogoDao.salvar(j);
-
-	System.out.println("Fim");
-*/
-
+		JogoDao.salvar(jogo);
 	}
 }

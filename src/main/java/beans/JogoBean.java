@@ -44,6 +44,12 @@ public class JogoBean implements Serializable{
 		}	
 		return null;
 	}
+	
+	public void deletar() {		
+		JogoDao.deletar(jogo);
+		list = JogoDao.listarTodos();
+	}
+	
 
 	public Jogo getJogo() {
 		return jogo;

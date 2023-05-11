@@ -13,7 +13,7 @@ public class JogoDao {
 	
 	Random random = new Random();
 
-public static void salvar(Jogo j) {
+	public static void salvar(Jogo j) {
 		
 		EntityManager em = JPAUtil.creatingEntityManager();
 		em.getTransaction().begin();
@@ -22,6 +22,17 @@ public static void salvar(Jogo j) {
 		em.close();
 	}
 	
+	public static void deletar(Jogo j) {
+		
+		EntityManager em = JPAUtil.creatingEntityManager();
+		em.getTransaction().begin();
+		j = em.find(Jogo.class, j.getId());
+		em.remove(j);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+
 	public static List<Jogo> listarTodos() {
 		
 		EntityManager em = JPAUtil.creatingEntityManager();

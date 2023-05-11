@@ -1,6 +1,5 @@
 package ui;
 
-import java.util.List;
 import java.util.Random;
 
 import daos.JogoDao;
@@ -9,11 +8,9 @@ import entities.Jogo;
 public class Principal {
 	public static void main(String[] args) {
 		
-		Random random = new Random();
+		Random random = new Random();		
 		
-		
-		
-		System.out.println("Início");
+		System.out.println("InÃ­cio");
 
 		Jogo j = new Jogo();
 		j.setNome("Marcos");
@@ -26,13 +23,6 @@ public class Principal {
 					
 		JogoDao.salvar(j);
 
-		System.out.println(JogoDao.listarTodos());
-		
-		System.out.println("Fim");
-		
-		List<Jogo> listar = JogoDao.listarTodos();
-		
-		
-		System.out.println(listar);
+	System.out.println("Fim");
 	}
 }

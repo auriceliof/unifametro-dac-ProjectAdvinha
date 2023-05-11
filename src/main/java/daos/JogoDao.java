@@ -22,24 +22,6 @@ public static void salvar(Jogo j) {
 		em.close();
 	}
 	
-	public static void editar(Jogo j) {
-		EntityManager em = JPAUtil.creatingEntityManager();
-		em.getTransaction().begin();
-		em.merge(j);
-		em.getTransaction().commit();
-		em.close();
-	}
-
-	public static void deletar(Jogo j) {
-		
-		EntityManager em = JPAUtil.creatingEntityManager();
-		em.getTransaction().begin();
-		j = em.find(Jogo.class, j.getId());
-		em.remove(j);
-		em.getTransaction().commit();
-		em.close();
-	}
-	
 	public static List<Jogo> listarTodos() {
 		
 		EntityManager em = JPAUtil.creatingEntityManager();
@@ -49,25 +31,4 @@ public static void salvar(Jogo j) {
 		em.close();
 		return list;
 	}
-	
-	
-	public Random gerarNum() {
-	
-		int [] array = new int[5];
-		
-		Random random = new Random();
-		
-		boolean temnumero = false;
-		for (int i = 0; i < 5; i ++){
-		
-			int valor = random.nextInt(10);
-			for (int j = 0; j < 4; j ++){
-				if (array[j] == valor){
-					j = 4;
-					temnumero = true;
-					}
-				}
-			}
-		return null;
-		}	
 }

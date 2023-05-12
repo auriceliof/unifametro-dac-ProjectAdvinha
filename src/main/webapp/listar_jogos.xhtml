@@ -24,7 +24,7 @@
 			</div>
 			
 			<p:dataTable id="dt" value="#{jogoBean.list}" var="l" selection="#{jogoBean.jogo}" selectionMode="single" rowKey="#{l.id}"
-			paginator="true" rows="3" paginatorPosition="bottom" style="text-align: center;">	
+			paginator="true" rows="5" paginatorPosition="bottom" style="text-align: center;">	
 										
 				<p:column headerText="Jogador" style="text-align: center;">
 					<p:column>
@@ -110,10 +110,37 @@
 	</h:form>
 				
 	<p:dialog header="Visualizar" widgetVar="visualizar" >
+				
 		<h:form id="form_view" >
-			<h:panelGrid columns="2" cellpadding="5" id="visualizar">
-				<p:outputLabel for="id" value="Id: "/>
-				<p:inputText id="id" value="#{jogoBean.jogo.id}" disabled="true"/>
+		
+			<p:outputLabel id="ganhador1"  rendered="#{jogoBean.jogo.resultado == 'true'}">
+				<p:outputLabel for="ganhador1" value="VOCÊ ACERTOU !!!" 
+					style="display: flex;
+							justify-content: center;
+							align-items: center;
+							height: 50px;
+							color:#394ce5;
+							background-color: #8ebd8e;
+							font-style: italic;
+							font-weight: bold;
+							margin-bottom: 35px;"/> 		
+			</p:outputLabel>
+			
+			<p:outputLabel id="ganhador2"  rendered="#{jogoBean.jogo.resultado == 'false'}">
+				<p:outputLabel for="ganhador2" value="VOCÊ NÃO ACERTOU !!!" 
+					style="display: flex;
+							justify-content: center;
+							align-items: center;
+							height: 50px;
+							color:#394ce5;
+							background-color: #f08989;
+							font-style: italic;
+							font-weight: bold;
+							margin-bottom: 35px;"/> 		
+			</p:outputLabel>		
+				
+		
+			<h:panelGrid columns="2" cellpadding="5" id="visualizar">				
 
 				<p:outputLabel for="jogador" value="Jogador: "/>
 				<p:inputText id="jogador" value="#{jogoBean.jogo.jogador}" disabled="true"/>
@@ -138,7 +165,7 @@
 				
 				<p:outputLabel for="result" value="Resultado: "/>
 				<p:inputText id="result" value="#{jogoBean.jogo.resultado}" disabled="true"/>
-	
+					
 			</h:panelGrid>
 		</h:form>
 	</p:dialog>	

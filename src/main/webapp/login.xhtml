@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>login</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<p:panel header="Jogo Adivinha">				
+					
+				<div>
+					<h5>Vamos Jogar!?</h5>
+				</div>
+				<div>
+					<h:graphicImage library="imagens" name="roleta.jpg"  />
+				</div>
+				
+				<div style="margin-top: 30px;">
+					<p:linkButton value="Entrar" outcome="novo_jogo" update="form"
+						style="	border-radius: 25px; 
+									margin-right: 10px;
+									width: 8rem;" />
+				</div>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
